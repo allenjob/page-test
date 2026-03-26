@@ -3,18 +3,141 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="A fullscreen animated fireworks page built with plain HTML, CSS, and JavaScript.">
-  <title>Fireworks</title>
+  <meta name="description" content="一个为萱萱准备的生日惊喜页面，有烟花、彩带和温柔的祝福。">
+  <title>萱萱，生日快乐</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <audio id="birthdayMusic" loop preload="auto">
+    <source src="riverbend-serenade.mp3" type="audio/mpeg">
+  </audio>
+
   <main class="scene">
-    <canvas id="fireworksCanvas" aria-label="Animated fireworks display"></canvas>
-    <div class="overlay">
-      <p class="subtitle">Fullscreen Animation</p>
-      <h1>Fireworks in the Night Sky</h1>
-      <button id="replayButton" type="button">Replay Fireworks</button>
+    <canvas id="fireworksCanvas" aria-hidden="true"></canvas>
+
+    <div class="stars" aria-hidden="true">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
     </div>
+
+    <div class="balloons" aria-hidden="true">
+      <span class="balloon balloon-gold"></span>
+      <span class="balloon balloon-pink"></span>
+      <span class="balloon balloon-blue"></span>
+      <span class="balloon balloon-peach"></span>
+    </div>
+
+    <section class="overlay">
+      <button class="music-toggle" id="musicToggle" type="button">播放音乐</button>
+      <div class="experience">
+        <article class="panel is-active" data-panel="intro">
+          <p class="subtitle">生日小惊喜</p>
+          <h1>送给萱萱</h1>
+          <p class="message">
+            这是专门为你准备的小小惊喜，点一下下面的按钮，让今天的快乐正式开始。
+          </p>
+          <div class="gift-box" id="giftBox" aria-hidden="true">
+            <span class="gift-lid"></span>
+            <span class="gift-body"></span>
+            <span class="gift-ribbon gift-ribbon-vertical"></span>
+            <span class="gift-ribbon gift-ribbon-horizontal"></span>
+          </div>
+          <div class="actions">
+            <button id="openSurpriseButton" type="button">打开惊喜</button>
+          </div>
+        </article>
+
+        <article class="panel" data-panel="celebration">
+          <p class="subtitle">今天要好好庆祝</p>
+          <h1>生日快乐</h1>
+          <p class="name">亲爱的萱萱</p>
+          <p class="message">
+            愿萱萱今天有很多很多笑容、很多很多惊喜，也有很多很多爱与幸福围绕着你。
+          </p>
+
+          <div class="actions">
+            <button id="replayButton" type="button">再庆祝一次</button>
+            <button id="confettiButton" type="button" class="secondary-button">更多彩带</button>
+            <button class="secondary-button" type="button" data-next="wish">下一页</button>
+          </div>
+
+          <div class="cake" aria-hidden="true">
+            <div class="candle-group">
+              <span class="candle"></span>
+              <span class="candle"></span>
+              <span class="candle"></span>
+            </div>
+            <div class="cake-top"></div>
+            <div class="cake-base"></div>
+          </div>
+        </article>
+
+        <article class="panel" data-panel="wish">
+          <p class="subtitle">生日愿望</p>
+          <h1>三份小祝福</h1>
+          <div class="wish-grid">
+            <button class="wish-card" type="button" data-wish="祝福一：希望你能赚很多很多的钱 能够在这个行业里 有人能送你很多很多你想要的大九嘿嘿。">
+              <span>祝福一</span>
+              <strong>希望你能赚很多很多的钱 能够在这个行业里 有人能送你很多很多你想要的大九嘿嘿。</strong>
+            </button>
+            <button class="wish-card" type="button" data-wish="祝福二：希望你能天天开心 然后能关关难过关关过 所有东西事情都拦不了你！！">
+              <span>祝福二</span>
+              <strong>希望你能天天开心 然后能关关难过关关过 所有东西事情都拦不了你！！</strong>
+            </button>
+            <button class="wish-card" type="button" data-wish="祝福三：希望你能顺顺利利 平平安安 事业有成 要乖乖哦 。">
+              <span>祝福三</span>
+              <strong>希望你能顺顺利利 平平安安 事业有成 要乖乖哦</strong>
+            </button>
+          </div>
+          <p class="wish-output" id="wishOutput">点一下卡片，就会出现一份送给萱萱的小祝福。</p>
+          <div class="actions">
+            <button class="secondary-button" type="button" data-prev="celebration">上一页</button>
+            <button type="button" data-next="final">最后一页</button>
+          </div>
+        </article>
+
+        <article class="panel" data-panel="final">
+          <p class="subtitle">还有一句话</p>
+          <h1>因为有你，世界更温柔</h1>
+          <p class="message final-note" id="finalNote">
+            萱萱，生日快乐。愿你在新的一岁里，拥有更多温柔时刻、更多美好回忆，也拥有越来越多发自内心的笑容。
+          </p>
+          <div class="actions">
+            <button class="secondary-button" type="button" data-prev="wish">上一页</button>
+            <button type="button" data-next="video">最后一页</button>
+          </div>
+        </article>
+
+        <article class="panel" data-panel="video">
+          <p class="subtitle">最后一个小彩蛋</p>
+          <h1>生日歌</h1>
+          <p class="message">
+            再送你一个生日歌！！
+          </p>
+          <div class="video-card">
+            <div class="video-frame">
+              <iframe
+                src="https://player.bilibili.com/player.html?bvid=BV1yK411w7qk&page=1"
+                title="搞笑生日歌"
+                loading="lazy"
+                allowfullscreen>
+              </iframe>
+            </div>
+            <p class="video-note">
+              如果没有看不见，也可以直接点这里：
+              <a href="https://www.bilibili.com/video/BV1yK411w7qk/" target="_blank" rel="noopener noreferrer">打开视频</a>
+            </p>
+          </div>
+          <div class="actions">
+            <button class="secondary-button" type="button" data-prev="final">上一页</button>
+          </div>
+        </article>
+      </div>
+    </section>
   </main>
 
   <script src="script.js"></script>
