@@ -3,113 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="A clean and shareable website template for GitHub Pages and WeChat sharing.">
-  <title>Welcome Page</title>
+  <meta name="description" content="A fullscreen animated fireworks page built with plain HTML, CSS, and JavaScript.">
+  <title>Fireworks</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header class="hero" id="top">
-    <canvas class="fireworks-canvas" id="fireworksCanvas" aria-hidden="true"></canvas>
-    <nav class="nav">
-      <a class="brand" href="#top">Your Brand</a>
-      <div class="nav-links">
-        <a href="#services">Services</a>
-        <a href="#about">About</a>
-        <a href="#contact">Contact</a>
-      </div>
-    </nav>
-
-    <div class="hero-content">
-      <p class="eyebrow">Simple / Fast / Shareable</p>
-      <h1>Build trust with a clean page people can open anywhere.</h1>
-      <p class="hero-copy">
-        This template is designed for easy GitHub Pages hosting and lightweight sharing in WeChat or other social apps.
-        Replace the text with your own company, product, event, or personal introduction.
-      </p>
-      <div class="hero-actions">
-        <a class="button button-primary" href="#contact">Get In Touch</a>
-        <a class="button button-secondary" href="#services">See Details</a>
-        <button class="button button-secondary" id="fireworksButton" type="button">Launch Fireworks</button>
-      </div>
+  <main class="scene">
+    <canvas id="fireworksCanvas" aria-label="Animated fireworks display"></canvas>
+    <div class="overlay">
+      <p class="subtitle">Fullscreen Animation</p>
+      <h1>Fireworks in the Night Sky</h1>
+      <button id="replayButton" type="button">Replay Fireworks</button>
     </div>
-  </header>
-
-  <main>
-    <section class="section section-light" id="services">
-      <div class="section-heading">
-        <p class="section-label">What You Offer</p>
-        <h2>A flexible layout for many use cases</h2>
-      </div>
-      <div class="card-grid">
-        <article class="card">
-          <h3>Business Profile</h3>
-          <p>Introduce your company, your services, and why people should contact you.</p>
-        </article>
-        <article class="card">
-          <h3>Product Showcase</h3>
-          <p>Highlight a product with key features, pricing notes, and clear calls to action.</p>
-        </article>
-        <article class="card">
-          <h3>Event Invitation</h3>
-          <p>Share an event page with the date, location, schedule, and RSVP information.</p>
-        </article>
-      </div>
-    </section>
-
-    <section class="section section-accent" id="about">
-      <div class="two-column">
-        <div>
-          <p class="section-label">About</p>
-          <h2>Made to be edited quickly</h2>
-        </div>
-        <div>
-          <p>
-            This page uses only normal HTML, CSS, and JavaScript. There are no frameworks and no external assets,
-            so it stays lightweight and easy to upload to GitHub.
-          </p>
-          <p>
-            You can change the colors, text, sections, and button links to match your own purpose. It also adapts
-            cleanly to mobile screens.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <section class="section section-light">
-      <div class="highlight-panel">
-        <p class="section-label">Why This Works</p>
-        <h2>Good for testing with GitHub Pages</h2>
-        <ul class="checklist">
-          <li>No external libraries required</li>
-          <li>Fast loading on mobile networks</li>
-          <li>Easy to upload as a simple static website</li>
-          <li>Simple structure for future editing</li>
-        </ul>
-      </div>
-    </section>
-
-    <section class="section section-dark" id="contact">
-      <div class="contact-box">
-        <p class="section-label">Contact</p>
-        <h2>Ready to customize this page?</h2>
-        <p>
-          Replace this section with your phone number, WeChat ID, email address, office location, or any message you
-          want visitors to see.
-        </p>
-        <div class="contact-actions">
-          <a class="button button-primary" href="mailto:hello@example.com">Email Me</a>
-          <button class="button button-secondary" id="copyButton" type="button" data-copy="WeChat ID: your-wechat-id">
-            Copy WeChat ID
-          </button>
-        </div>
-        <p class="copy-feedback" id="copyFeedback" aria-live="polite"></p>
-      </div>
-    </section>
   </main>
-
-  <footer class="footer">
-    <p>&copy; <span id="year"></span> Your Brand. All rights reserved.</p>
-  </footer>
 
   <script src="script.js"></script>
 </body>
