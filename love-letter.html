@@ -1,0 +1,179 @@
+﻿<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Allen 写给星芋的信</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=ZCOOL+XiaoWei&family=Ma+Shan+Zheng&display=swap');
+
+    :root {
+      --bg-1: #fff6df;
+      --bg-2: #ffd8c2;
+      --bg-3: #ff9a8b;
+      --ink: #402a22;
+      --card: rgba(255, 252, 246, 0.74);
+      --line: rgba(64, 42, 34, 0.22);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--ink);
+      font-family: "ZCOOL XiaoWei", "KaiTi", serif;
+      background: radial-gradient(circle at 10% 20%, var(--bg-1), transparent 45%),
+                  radial-gradient(circle at 90% 80%, #ffd5a8, transparent 42%),
+                  linear-gradient(135deg, var(--bg-2), var(--bg-3));
+      display: grid;
+      place-items: center;
+      padding: 24px;
+    }
+
+    .wrap {
+      width: min(700px, 95vw);
+    }
+
+    .title {
+      text-align: center;
+      margin: 0 0 16px;
+      font-size: clamp(1.7rem, 4.4vw, 2.7rem);
+    }
+
+    .envelope {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      box-shadow: 0 16px 48px rgba(92, 43, 24, 0.18);
+      padding: 18px;
+      backdrop-filter: blur(7px);
+    }
+
+    .seal {
+      border: 1px dashed var(--line);
+      border-radius: 16px;
+      padding: 34px 20px;
+      text-align: center;
+      cursor: pointer;
+      user-select: none;
+      background: linear-gradient(160deg, rgba(255,255,255,0.55), rgba(255,219,198,0.52));
+      transition: 0.3s ease;
+    }
+
+    .seal:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 24px rgba(170, 66, 66, 0.16);
+    }
+
+    .wax {
+      width: 74px;
+      aspect-ratio: 1;
+      border-radius: 50%;
+      margin: 0 auto 12px;
+      display: grid;
+      place-items: center;
+      font-size: 30px;
+      color: #fff4f4;
+      background: radial-gradient(circle at 30% 28%, #ff9f9f, #d23d53 66%);
+      box-shadow: 0 8px 22px rgba(170, 30, 58, 0.35);
+      animation: pulse 2.1s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.07); }
+    }
+
+    .tip {
+      font-size: 1.08rem;
+      letter-spacing: 0.5px;
+    }
+
+    .letter {
+      margin-top: 14px;
+      border-radius: 16px;
+      border: 1px solid rgba(64, 42, 34, 0.14);
+      background: rgba(255, 255, 255, 0.7);
+      padding: 22px;
+      display: none;
+    }
+
+    .letter.show {
+      display: block;
+      animation: rise 0.45s ease;
+    }
+
+    @keyframes rise {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .content {
+      margin: 0;
+      line-height: 1.95;
+      font-size: clamp(1.03rem, 2.8vw, 1.17rem);
+      white-space: pre-wrap;
+      min-height: 188px;
+    }
+
+    .sign {
+      margin-top: 12px;
+      text-align: right;
+      font-family: "Ma Shan Zheng", "STKaiti", cursive;
+      font-size: 1.5rem;
+      color: #7a3935;
+      opacity: 0;
+      transition: 0.5s ease;
+    }
+
+    .sign.show { opacity: 1; }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <h1 class="title">Allen 写给星芋的一封信</h1>
+
+    <section class="envelope">
+      <div class="seal" id="openLetter">
+        <div class="wax">❤</div>
+        <div class="tip">点开信封，看看 Allen 想对星芋说的话</div>
+      </div>
+
+      <article class="letter" id="letterBox">
+        <p class="content" id="typedText"></p>
+        <div class="sign" id="signature">永远爱你的 Allen</div>
+      </article>
+    </section>
+  </main>
+
+  <script>
+    const letterText = `你好 亲爱的星芋大人，\n\n我想对你说，第一次遇见你时，觉得你是个很真诚、情绪也很稳定、三观也好，然后拥有自己想法，坚强且成熟的姐姐。\n\n一开始我真的只把你当成姐姐，因为我觉得姐姐那么一个优秀的人，绝对能找到自己的王子，但没有想到在深入的了解中，我渐渐对你有了依赖，什么事都想跟你说。\n\n当你说也喜欢我时，我是震惊的，因为我没有想到我会让姐姐有这样的感觉，我感到很意外，也很开心。然后呢，我们从好感到喜欢，慢慢开始有了爱，我们都发生了很多事情，有开心的、争吵的、意见不合的、伤心的，但我们也是挺过来了。我也觉得很庆幸，也觉得很多事情其实都是可以解决的。\n\n然后我也想跟你道歉啦，我不应该那时推开你，跟你闹。因为我那时候开始，我觉得我配不上你，给不了你想要的，所以感觉也阻碍了你，希望你能原谅我呜呜呜呜。\n\n在这里我想说，遇见你是我的幸运，也是我的荣幸。能够认识你，和你交往和相爱，是我之前想到不敢想的事情，这让我感觉到了爱情的滋味。也谢谢宝宝非常地包容我、理解我，这是我最感动的事。\n\n最后呢，我爱你哦星芋！！\n\n- Allen`;
+
+    const openLetter = document.getElementById('openLetter');
+    const letterBox = document.getElementById('letterBox');
+    const typedText = document.getElementById('typedText');
+    const signature = document.getElementById('signature');
+
+    let opened = false;
+    openLetter.addEventListener('click', () => {
+      if (opened) return;
+      opened = true;
+
+      letterBox.classList.add('show');
+      openLetter.style.opacity = '0.78';
+      openLetter.style.pointerEvents = 'none';
+
+      let i = 0;
+      const timer = setInterval(() => {
+        typedText.textContent += letterText[i];
+        i += 1;
+        if (i >= letterText.length) {
+          clearInterval(timer);
+          signature.classList.add('show');
+        }
+      }, 34);
+    });
+  </script>
+</body>
+</html>
